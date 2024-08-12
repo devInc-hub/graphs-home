@@ -24,6 +24,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '21'
+          distribution: zulu
       - name: Build 
         run: ./gradlew build -x test # прогоняем только сборку без запуска автотестов
       - name: Test

@@ -1,6 +1,6 @@
 # конфигурационный файл для сборки проекта
 
-name: Test # имя workflow-а
+name: Test # имя workflow
 
 on: # прописываем триггеры для нашего workflow-a
   pull_request:

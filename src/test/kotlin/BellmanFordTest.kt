@@ -50,6 +50,7 @@ class BellmanFordTest {
         val result = bellmanFordUndirected.findShortestPath(1, 4)
         assertEquals(Pair(6, listOf(1, 2, 3, 4)), result)
     }
+
     @Test
     fun testNegativeWeightCycle() {
         dirGraph.addEdge(Pair(4, 1), -8) // Добавляем отрицательный цикл

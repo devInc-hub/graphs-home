@@ -27,7 +27,15 @@ class BridgeFinder<D> {
         return bridges
     }
 
-    private fun bridgeUtil(u: Int, visited: BooleanArray, disc: IntArray, low: IntArray, parent: IntArray, graph: Graph<D>, bridges: MutableList<Pair<Int, Int>>) {
+    private fun bridgeUtil(
+        u: Int,
+        visited: BooleanArray,
+        disc: IntArray,
+        low: IntArray,
+        parent: IntArray,
+        graph: Graph<D>,
+        bridges: MutableList<Pair<Int, Int>>
+    ) {
         visited[u] = true
         disc[u] = ++time
         low[u] = time

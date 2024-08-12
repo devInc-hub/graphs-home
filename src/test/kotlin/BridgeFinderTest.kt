@@ -37,7 +37,10 @@ class BridgeFinderTest {
         undirGraph.addEdge(Pair(3, 4), 1)
 
         val bridges = bridgeFinder.findBridges(undirGraph)
-        assertEquals(listOf(Pair(0, 1), Pair(1, 2), Pair(2, 3), Pair(3, 4)), bridges.sortedWith(compareBy({ it.first }, { it.second })))
+        assertEquals(
+            listOf(Pair(0, 1), Pair(1, 2), Pair(2, 3), Pair(3, 4)),
+            bridges.sortedWith(compareBy({ it.first }, { it.second }))
+        )
     }
 
     @Test
@@ -60,6 +63,9 @@ class BridgeFinderTest {
         undirGraph.addEdge(Pair(3, 4), 1)
 
         val bridges = bridgeFinder.findBridges(undirGraph)
-        assertEquals(listOf(Pair(0, 1), Pair(2, 3), Pair(3, 4)), bridges.sortedWith(compareBy({ it.first }, { it.second })))
+        assertEquals(
+            listOf(Pair(0, 1), Pair(2, 3), Pair(3, 4)),
+            bridges.sortedWith(compareBy({ it.first }, { it.second }))
+        )
     }
 }

@@ -8,8 +8,8 @@ on: # прописываем триггеры для нашего workflow-a
       - '**.kt'
       - '**.yml'
   push:
-	  paths:
-	    - '**.kt'
+    paths:
+      - '**.kt'
       - '**.yml'
 
 jobs: # перечисляем задания, каждое из которых запускается на отдельном docker-контейнере,
@@ -19,15 +19,15 @@ jobs: # перечисляем задания, каждое из которых 
     steps: # последовательность действий, которые нужно выполнить в docker-контейнере
 				   # gitActions позволяет использовать готовые логические блоки команд, называемые action-ами
       - name: Check out repository code
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
       - name: Build 
-      - run: ./gradlew build -x test # прогоняем только сборку без запуска автотестов
+        run: ./gradlew build -x test # прогоняем только сборку без запуска автотестов
       - name: Test
-      - run: ./gradlew test 
+        run: ./gradlew test 
       - name: Upload coverage reports to Codecov
 				uses: codecov/codecov-action@v4
 				with:

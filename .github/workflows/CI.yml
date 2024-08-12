@@ -12,12 +12,12 @@ on: # прописываем триггеры для нашего workflow-a
       - '**.kt'
       - '**.yml'
 
-jobs: # перечисляем задания, каждое из которых запускается на отдельном docker-контейнере,
-			# с развернутым на нём образом выбранной далее ОС
+jobs: 
   test:
+    if: github.actor!= 'github-classroom[bot]'
+
     runs-on: ubuntu-latest # выбрали окружение
-    steps: # последовательность действий, которые нужно выполнить в docker-контейнере
-				   # gitActions позволяет использовать готовые логические блоки команд, называемые action-ами
+    steps: 				   
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Set up JDK 21

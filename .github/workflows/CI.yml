@@ -2,7 +2,7 @@
 
 name: Test # имя workflow-а
 
-on:# прописываем триггеры для нашего workflow-a
+on: # прописываем триггеры для нашего workflow-a
   pull_request:
     paths:
       - '**.kt'

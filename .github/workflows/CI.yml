@@ -29,7 +29,3 @@ jobs:
         run: ./gradlew build -x test # прогоняем только сборку без запуска автотестов
       - name: Test
         run: ./gradlew test 
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}

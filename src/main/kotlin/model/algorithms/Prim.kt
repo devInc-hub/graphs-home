@@ -83,22 +83,22 @@ class Prim<D>(private val graph: UndirectedGraph<D>) {
      * @param idVertex init vertex for dfs
      * @param visited stores information about which vertices of the graph
      * have already been processed by the Prim's algorithm
-     * @return found connectivity component of the graph
+     * @param component found connectivity component of the graph
+     * @return found connectivity component
      * @receiver fun [treePrim]
      */
     private fun dfs(
         idVertex: Int,
         visited: HashMap<Int, Boolean>,
+        component: UndirectedGraph<D>
     ): UndirectedGraph<D> {
 
-        val component = UndirectedGraph<D>()
-        component.addVertex(idVertex, graph.vertices[idVertex]!!.data)
         visited[idVertex] = true
         for (idAdjacency in graph.adjacency[idVertex]!!.keys) {
             if (visited[idAdjacency] == false) {
                 visited[idAdjacency] = true
                 component.addVertex(idAdjacency, graph.vertices[idAdjacency]!!.data)
-                dfs(idAdjacency, visited)
+                dfs(idAdjacency, visited, component)
             }
         }
         for (edge in this.graph.edges) {
@@ -130,7 +130,9 @@ class Prim<D>(private val graph: UndirectedGraph<D>) {
         while (visited.values.contains(false)) {
 
             initIndex = visited.filterValues { !it }.keys.first()
-            component = dfs(initIndex, visited)
+            component = UndirectedGraph<D>()
+            component.addVertex(initIndex, graph.vertices[initIndex]!!.data)
+            component = dfs(initIndex, visited, component)
             returnListOfMST.add(getMST(component))
 
         }

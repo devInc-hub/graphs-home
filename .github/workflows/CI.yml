@@ -1,22 +1,16 @@
-# конфигурационный файл для сборки проекта
+name: Test # autorun of the project build and tests
 
-name: Test # имя workflow-а
-
-on: # прописываем триггеры для нашего workflow - a
+on: 
+  workflow_dispatch:
   pull_request:
     paths:
       - '**.kt'
-      - '**.yml'
   push:
     paths:
       - '**.kt'
-      - '**.yml'
-
 jobs: 
   test:
-    if: github.actor!= 'github-classroom[bot]'
-
-    runs-on: ubuntu-latest # выбрали окружение
+    runs-on: ubuntu-latest 
     steps: 				   
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -26,6 +20,6 @@ jobs:
           java-version: '21'
           distribution: zulu
       - name: Build 
-        run: ./gradlew build -x test # прогоняем только сборку без запуска автотестов
+        run: ./gradlew build -x test 
       - name: Test
         run: ./gradlew test 
